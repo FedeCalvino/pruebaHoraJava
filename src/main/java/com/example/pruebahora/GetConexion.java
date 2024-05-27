@@ -1,14 +1,11 @@
 package com.example.pruebahora;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.util.Date;
 
 public class GetConexion {
-    private static final String DRIVER="com.microsoft.sqlserve.amazonaws.com";
-    private static final String connectionUrl = "jdbc:sqlserver://sqlserver.cz0se24qsz75.us-east-1.rds.amazonaws.com;user=SQLAnneDecor;password=SQLAnneDecor;databaseName=SistemaCortinas;encrypt=true;trustServerCertificate=true;";
+    private static final String DRIVER="com.microsoft.sqlserver.jdbc.SQLServerDriver";
+    private static final String connectionUrl = "jdbc:sqlserver://annedecordatabase.database.windows.net:1433;database=AnneDecorDataBase;user=AnneDecor;password=anabistolfi1_;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
 
 
 
@@ -18,15 +15,15 @@ public class GetConexion {
     }
 
 
-    public Date FindDate() {
+    public Time FindDate() {
         java.sql.Connection connection = null;
-        Date newDate=null;
+        Time newDate=null;
         try{
             connection = (java.sql.Connection) GetConexion();
             PreparedStatement statement = connection.prepareStatement("SELECT GETDATE()");
             ResultSet rs = statement.executeQuery();
             while(rs.next()){
-                 newDate = rs.getDate(1);
+                 newDate = rs.getTime(1);
             }
 
         }catch(Exception e){
