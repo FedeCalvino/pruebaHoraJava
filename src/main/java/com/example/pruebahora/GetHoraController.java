@@ -8,15 +8,17 @@ import org.springframework.web.bind.annotation.RestController;
 import java.sql.Time;
 import java.util.Date;
 
-@CrossOrigin(origins = "http://localhost:5175")
 @RestController
 @RequestMapping("/Hora")
+@CrossOrigin(origins="http://localhost:5173")
 public class GetHoraController {
     private HoraService hService;
 
     public GetHoraController(HoraService hs) {
         this.hService = hs;
     }
+
+
 
     @GetMapping
     public Time FindDate(){
